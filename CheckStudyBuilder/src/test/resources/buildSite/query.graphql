@@ -1,0 +1,7 @@
+query ExampleQuery($buildid: ID!) {
+  buildsites(buildid: $buildid) {
+    country {
+      name
+    }
+  }
+}

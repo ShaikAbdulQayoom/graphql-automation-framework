@@ -1,0 +1,7 @@
+query Query($buildid: ID!) {
+  cohorts(buildid: $buildid) {
+    closedate
+    code
+    createdAt
+  }
+}

@@ -1,0 +1,1 @@
+{"uuid":"0fb0d1ca-87aa-4488-8cac-30a7d8209aea","name":"CohortsTest","children":["a1b8710d-7e26-4d34-8718-105dacdcbd48"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1697539122365,"stop":1697539122368}],"afters":[],"start":1697539122350,"stop":1697539124566}

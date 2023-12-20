@@ -1,0 +1,1 @@
+{"uuid":"049f2882-d995-4bc2-b0fc-8fbfb1c68afd","name":"CrfByBuild","children":["4d09e29a-f607-438f-99ab-d06ccdaa2adf"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1699264245053,"stop":1699264245060}],"afters":[],"start":1699264245027,"stop":1699264249794}

@@ -1,0 +1,3 @@
+mutation deleteCrf($idToDelete: ID!) {
+  deleteCrf(crfid: $idToDelete)
+}

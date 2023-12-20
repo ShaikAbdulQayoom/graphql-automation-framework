@@ -1,0 +1,704 @@
+fragment crftext_fields on CRFText {
+  crftextid
+  download_title
+  epro_title
+  languageid
+  title
+  __typename
+}
+
+fragment messagetext_fields on MessageText {
+  body
+  header
+  languageid
+  messageid
+  messagetextid
+  __typename
+}
+
+fragment message_fields on Message {
+  conditions_aedc
+  conditions_asb
+  conditions_readable
+  crf {
+    code
+    __typename
+  }
+  crfid
+  display_after
+  messageid
+  messagetexts {
+    ...messagetext_fields
+    __typename
+  }
+  seq
+  __typename
+}
+
+fragment pagetext_fields on PageText {
+  languageid
+  pageid
+  pagetextid
+  title
+  __typename
+}
+
+fragment assessment_term_fields on AssessmentTerm {
+  is_specify_for_rejection
+  seq
+  __typename
+}
+
+fragment questioninstance_termlabel_fields on QuestionInstanceTermLabel {
+  in_answer_list
+  is_exclusive
+  seq
+  __typename
+}
+
+fragment pageitem_termlabel_fields on PageItemTermLabel {
+  in_answer_list
+  seq
+  __typename
+}
+
+fragment termtext_fields on TermText {
+  label
+  languageid
+  termlabelid
+  termtextid
+  __typename
+}
+
+fragment termlabel_fields on TermLabel {
+  termlabelid
+  is_default
+  termid
+  term {
+    value
+    __typename
+  }
+  termtexts {
+    ...termtext_fields
+    __typename
+  }
+  questioninstance_termlabel {
+    ...questioninstance_termlabel_fields
+    __typename
+  }
+  pageitem_termlabel {
+    ...pageitem_termlabel_fields
+    __typename
+  }
+  __typename
+}
+
+fragment visit_term_fields on VisitTerm {
+  is_free_text_reason
+  __typename
+}
+
+fragment term_fields on Term {
+  assessment_term {
+    ...assessment_term_fields
+    __typename
+  }
+  codelistid
+  cdisc_code
+  in_answer_list
+  is_exclusive
+  is_standard
+  label
+  nci_preferred_term
+  termid
+  termlabels {
+    ...termlabel_fields
+    __typename
+  }
+  value
+  visit_term {
+    ...visit_term_fields
+    __typename
+  }
+  __typename
+}
+
+fragment codelist_fields on Codelist {
+  cdisc_code
+  code
+  codelistid
+  createdAt
+  ct_version
+  definition
+  is_extensible
+  is_standard
+  is_numeric_terms_only
+  name
+  nci_preferred_term
+  terms {
+    ...term_fields
+    __typename
+  }
+  updatedAt
+  __typename
+}
+
+fragment function_variable_fields on FunctionVariable {
+  direction
+  functionid
+  seq
+  variableid
+  __typename
+}
+
+fragment importvalidation_variable_fields on ImportValidationVariable {
+  decimal
+  importvalidationid
+  length
+  variableid
+  __typename
+}
+
+fragment variable_fields on Variable {
+  codelist
+  codelistObj {
+    ...codelist_fields
+    __typename
+  }
+  completion_instructions
+  createdAt
+  data_type
+  definition
+  domainid
+  function_variable {
+    ...function_variable_fields
+    __typename
+  }
+  implementation_notes
+  importvalidation_variable {
+    ...importvalidation_variable_fields
+    __typename
+  }
+  is_admin
+  is_category
+  is_cdisc
+  is_occurrence
+  is_phi
+  is_result
+  is_standard
+  is_topic
+  is_unblinding
+  label
+  mapping_instructions
+  name
+  prompt
+  question_text
+  seq
+  updatedAt
+  variableid
+  __typename
+}
+
+fragment domain_fields on Domain {
+  cdash_version
+  code
+  createdAt
+  description
+  domainid
+  is_cdisc
+  is_singleton
+  is_standard
+  name
+  obsrv_class
+  reference_domainid
+  updatedAt
+  variables {
+    ...variable_fields
+    __typename
+  }
+  __typename
+}
+
+fragment pageiteminstancetext_fields on PageItemInstanceText {
+  column_header
+  header
+  instructions
+  languageid
+  pageiteminstanceid
+  pageiteminstancetextid
+  __typename
+}
+
+fragment pageiteminstance_fields on PageItemInstance {
+  column_styling
+  column_width
+  displayoption
+  epro_is_alwaysdisplayinstructions
+  epro_is_alwaysdisplayfile
+  expression
+  expression_name
+  expression_parsed
+  expression_readable
+  filename
+  first_column_styling
+  first_column_width
+  header_json
+  instructions_json
+  level
+  log_row_count
+  pageiteminstancetexts {
+    ...pageiteminstancetext_fields
+    __typename
+  }
+  pageiteminstanceid
+  seq
+  pageitem {
+    name
+    page {
+      pagetexts {
+        title
+        __typename
+      }
+      crf {
+        code
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment observation_fields on Observation {
+  cat
+  crfid
+  domainid
+  domain {
+    ...domain_fields
+    __typename
+  }
+  edc_code
+  is_userenteredoncrf
+  observationid
+  questions {
+    name
+    pageitem {
+      type
+      __typename
+    }
+    variable {
+      is_topic
+      name
+      __typename
+    }
+    variableid
+    __typename
+  }
+  seq
+  sub_cat
+  term {
+    ...term_fields
+    __typename
+  }
+  termid
+  topic
+  crf {
+    code
+    __typename
+  }
+  __typename
+}
+
+fragment unittext_fields on UnitText {
+  label
+  languageid
+  unitid
+  unittextid
+  __typename
+}
+
+fragment unit_fields on Unit {
+  cdisc_code
+  cdisc_synonyms
+  definition
+  is_standard
+  label
+  nci_preferred_term
+  unitid
+  unittexts {
+    ...unittext_fields
+    __typename
+  }
+  value
+  __typename
+}
+
+fragment questioninstancetext_fields on QuestionInstanceText {
+  face_1
+  face_2
+  face_3
+  face_4
+  face_5
+  helptext
+  instructions
+  introduction
+  languageid
+  min_help
+  max_help
+  questioninstanceid
+  questioninstancetextid
+  questiontext
+  prompt
+  tooltip
+  __typename
+}
+
+fragment questioninstance_fields on QuestionInstance {
+  ahigh_aedc
+  ahigh_parsed
+  ahigh_readable
+  allow_attachments
+  alow_aedc
+  alow_parsed
+  alow_readable
+  calculation_expression
+  calculation_expression_parsed
+  calculation_expression_readable
+  calculation_timing
+  can_edit
+  can_view
+  displayoption
+  edc_code
+  epro_display
+  expression
+  expression_name
+  expression_parsed
+  expression_readable
+  filename
+  graphics
+  helptext_json
+  indent
+  input_object
+  instructions_json
+  introduction_json
+  is_display_increments
+  is_expected
+  is_readonly
+  is_reported
+  is_required
+  is_reviewed
+  is_showwarning
+  is_verified
+  length
+  nhigh_aedc
+  nhigh_parsed
+  nhigh_readable
+  nlow_aedc
+  nlow_parsed
+  nlow_readable
+  precision
+  prompt_json
+  question_level
+  questionid
+  questioninstanceid
+  questioninstancetexts {
+    ...questioninstancetext_fields
+    __typename
+  }
+  questiontext_json
+  reset_question_numbers
+  scale
+  seq
+  show_if_skipped
+  slider_increment
+  slider_max
+  slider_min
+  sorttermsby
+  submission
+  termlabels {
+    ...termlabel_fields
+    __typename
+  }
+  timeformat
+  tooltip_json
+  units {
+    ...unit_fields
+    __typename
+  }
+  validate_as
+  question {
+    name
+    pageitem {
+      name
+      page {
+        pagetexts {
+          title
+          __typename
+        }
+        crf {
+          code
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment question_fields on Question {
+  codelist {
+    ...codelist_fields
+    __typename
+  }
+  codelistid
+  crfid
+  customVariableLabel
+  customVariableName
+  data_type
+  validate_as
+  domain {
+    ...domain_fields
+    __typename
+  }
+  domainid
+  edc_code
+  is_identifier
+  is_ininventory
+  is_phi
+  is_unblinding
+  name
+  observations {
+    ...observation_fields
+    __typename
+  }
+  pageitemid
+  questionid
+  questioninstances {
+    ...questioninstance_fields
+    __typename
+  }
+  role_overrides
+  role_permissions
+  sdtmvariableid
+  seq
+  show_in_listing
+  show_on_sameline
+  standard_unitid
+  tabid
+  category_value
+  unit {
+    ...unit_fields
+    __typename
+  }
+  variable {
+    ...variable_fields
+    __typename
+  }
+  variable_codelist
+  variable_data_type
+  variableid
+  variable_name
+  pageitem {
+    name
+    page {
+      pagetexts {
+        title
+        __typename
+      }
+      crf {
+        code
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment tabtext_fields on TabText {
+  header
+  instructions
+  languageid
+  tabid
+  tabtextid
+  __typename
+}
+
+fragment tab_fields on Tab {
+  edc_tab_code
+  expression
+  expression_parsed
+  expression_readable
+  observation {
+    ...observation_fields
+    __typename
+  }
+  observationid
+  pageitemid
+  questions {
+    ...question_fields
+    __typename
+  }
+  seq
+  tabid
+  tabtexts {
+    ...tabtext_fields
+    __typename
+  }
+  pageitem {
+    name
+    page {
+      pagetexts {
+        title
+        __typename
+      }
+      crf {
+        code
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment pageitem_fields on PageItem {
+  codelist {
+    ...codelist_fields
+    __typename
+  }
+  codelistid
+  createdAt
+  domain {
+    ...domain_fields
+    __typename
+  }
+  domainid
+  edc_code
+  is_mobile_friendly
+  name
+  pageid
+  pageitemid
+  pageiteminstances {
+    ...pageiteminstance_fields
+    __typename
+  }
+  questions {
+    ...question_fields
+    __typename
+  }
+  seq
+  sorttermsby
+  tabs {
+    ...tab_fields
+    __typename
+  }
+  termlabels {
+    ...termlabel_fields
+    __typename
+  }
+  type
+  updatedAt
+  view_as
+  page {
+    pagetexts {
+      title
+      __typename
+    }
+    crf {
+      code
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment page_fields on Page {
+  createdAt
+  crfid
+  description
+  edc_code
+  expression
+  expression_parsed
+  expression_readable
+  pageid
+  pageitems {
+    ...pageitem_fields
+    __typename
+  }
+  pagetexts {
+    ...pagetext_fields
+    __typename
+  }
+  role_overrides
+  role_permissions
+  seq
+  title
+  updatedAt
+  crf {
+    code
+    __typename
+  }
+  __typename
+}
+
+fragment crf_fields on CRF {
+  allow_attachments
+  buildid
+  code
+  crfid
+  crftexts {
+    ...crftext_fields
+    __typename
+  }
+  description
+  epro_priority
+  epro_settings
+  hasReviewedQuestion
+  is_alwaysavailable
+  is_blinded
+  is_collectcomments
+  is_epro
+  is_file_require_approval
+  is_gt
+  has_specimens
+  is_nonparticipant
+  is_reviewable
+  is_singleton
+  is_validated_instrument
+  is_verifiable
+  label
+  messages {
+    ...message_fields
+    __typename
+  }
+  original_revision_number
+  pages {
+    ...page_fields
+    __typename
+  }
+  priority
+  revision_number
+  role_overrides
+  role_permissions
+  question_numbering
+  show_expected
+  show_skipped_questions
+  version_number
+  visit_based
+  __typename
+}
+
+query crfsByBuild($buildid: ID!) {
+  crfsByBuild(buildid: $buildid) {
+    ...crf_fields
+    __typename
+  }
+}

@@ -1,0 +1,1 @@
+{"uuid":"952ffb62-b639-4355-988f-a4381bafea50","name":"BuildSitesTest","children":["d288aaa2-9b16-4c3b-b4e7-2e0c36af069e"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1696737122813,"stop":1696737162085}],"afters":[],"start":1696737122593,"stop":1696737202840}
